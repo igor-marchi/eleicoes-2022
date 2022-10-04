@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { HomeContainer } from "./styles";
+import { formatNumber, formatNumberCompact } from "../../utils/formatter";
 
 interface Candidate {
   cc: string,
   nm: string,
   pvap: string,
-  vap: string,
+  vap: number,
   n: string
 }
 
@@ -27,7 +28,7 @@ export function Home() {
             <p>Número {candidate.n}</p>
             <p>Nome {candidate.nm}</p>
             <p>Partido {candidate.cc}</p>
-            <p>Votos {candidate.vap}</p>
+            <p title={formatNumberCompact(candidate.vap)}>Votos {formatNumber(candidate.vap)}</p>
             <p>{candidate.pvap} %</p>
           </div>
         )
