@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { HomeContainer } from "./styles";
-import { formatNumber, formatNumberCompact } from "../../utils/formatter";
 import { apiTSE } from "../../lib/axios/apiTSE";
+import { Card } from "../../components/Card";
 
 interface CandidateJSON {
   cc: string;
@@ -53,19 +53,15 @@ export function Home() {
   return (
     <HomeContainer>
       <h1>Candidatos</h1>
-      {candidates.map((candidate) => {
+      {candidates.map(({ name, number, party, votes, votesInPercent }) => {
         return (
-          <div key={candidate.number}>
-            <p>Número {candidate.number}</p>
-            <p>Nome {candidate.name}</p>
-            <p>Partido {candidate.party}</p>
-            <p title={formatNumberCompact(candidate.votes)}>
-              Votos {formatNumber(candidate.votes)}
-            </p>
-            <p>Porcentagem de votos: {candidate.votesInPercent}%</p>
-
-            <hr />
-          </div>
+          <Card
+            name={name}
+            number={number}
+            party={party}
+            votes={votes}
+            votesInPercent={votesInPercent}
+          />
         );
       })}
     </HomeContainer>
