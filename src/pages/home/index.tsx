@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { HomeContainer } from "./styles";
 import { formatNumber, formatNumberCompact } from "../../utils/formatter";
+import { apiTSE } from "../../lib/axios/apiTSE";
 
 interface CandidateJSON {
   cc: string;
@@ -34,12 +35,17 @@ function replyDataNames(data: CandidateJSON[]): Candidate[] {
 export function Home() {
   const [candidates, setCandidates] = useState<Candidate[]>([]);
 
+  async function getData() {
+    const response = await apiTSE.get("");
+    const { cand } = response.data;
+
+    const candidatesList = replyDataNames(cand);
+
+    setCandidates(candidatesList);
+  }
+
   useEffect(() => {
-    fetch(
-      "https://resultados.tse.jus.br/oficial/ele2022/544/dados-simplificados/br/br-c0001-e000544-r.json"
-    )
-      .then((response) => response.json())
-      .then((data) => setCandidates(replyDataNames(data.cand)));
+    getData();
   }, []);
 
   return (
