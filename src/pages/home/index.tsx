@@ -52,18 +52,20 @@ export function Home() {
 
   return (
     <HomeContainer>
-      <h1>Candidatos</h1>
-      {candidates.map(({ name, number, party, votes, votesInPercent }) => {
-        return (
-          <Card
-            name={name}
-            number={number}
-            party={party}
-            votes={votes}
-            votesInPercent={votesInPercent}
-          />
-        );
-      })}
+      <h1>PRESIDENTES</h1>
+      <div>
+        {candidates.map(({ name, number, party, votes, votesInPercent }) => {
+          return (
+            <Card
+              name={name}
+              number={number}
+              party={party}
+              votes={votes}
+              votesInPercent={votesInPercent}
+            />
+          );
+        })}
+      </div>
     </HomeContainer>
   );
 }
