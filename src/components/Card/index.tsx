@@ -1,5 +1,5 @@
 import { formatNumber } from "../../utils/formatter";
-import { CardContainer } from "./styles";
+import { CardContainer, CardTitle } from "./styles";
 
 interface CandidateProps {
   party: string;
@@ -19,7 +19,7 @@ export function Card({
   return (
     <CardContainer key={number}>
       <div>
-        <h2>{votesInPercent}</h2>
+        <CardTitle>{votesInPercent}%</CardTitle>
         <p>{formatNumber(votes)}</p>
         <span>VOTOS</span>
       </div>
