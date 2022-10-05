@@ -60,7 +60,7 @@ export function Home() {
             <p title={formatNumberCompact(candidate.votes)}>
               Votos {formatNumber(candidate.votes)}
             </p>
-            <p>Porcentagem de votos: {candidate.votesInPercent} %</p>
+            <p>Porcentagem de votos: {candidate.votesInPercent}%</p>
 
             <hr />
           </div>
