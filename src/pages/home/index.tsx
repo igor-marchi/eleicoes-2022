@@ -18,7 +18,7 @@ interface Candidate {
   number: string;
 }
 
-function replyDataNames(data: CandidateJSON[]): Candidate[] {
+function replyDataKey(data: CandidateJSON[]): Candidate[] {
   return data.map((candidateJson) => {
     const candidate: Candidate = {
       name: candidateJson.nm,
@@ -39,7 +39,7 @@ export function Home() {
     const response = await apiTSE.get("");
     const { cand } = response.data;
 
-    const candidatesList = replyDataNames(cand);
+    const candidatesList = replyDataKey(cand);
 
     setCandidates(candidatesList);
   }
