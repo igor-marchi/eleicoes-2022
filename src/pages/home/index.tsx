@@ -36,7 +36,9 @@ export function Home() {
   const [candidates, setCandidates] = useState<Candidate[]>([]);
 
   async function getData() {
-    const response = await apiTSE.get("");
+    const response = await apiTSE.get(
+      "/oficial/ele2022/544/dados-simplificados/br/br-c0001-e000544-r.json"
+    );
     const { cand } = response.data;
 
     const candidatesList = replyDataKey(cand);
